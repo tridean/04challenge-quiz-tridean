@@ -79,3 +79,19 @@ body {
 .btn:disabled{
     cursor: no-drop;
 }
+
+.timer {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.hiscores {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    margin: 100px auto 0;
+    border-radius: 10px;
+    padding: 30px;
+}

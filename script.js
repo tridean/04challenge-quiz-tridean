@@ -30,7 +30,7 @@ const questions = [
         question: "What should you do when staring at a blank file?",
         answers: [
             {text: "Start with something small.", correct: true},
-            {text: "Continue to stare at it for 2 hours.", correct: true},
+            {text: "Continue to stare at it for 2 hours.", correct: false},
             {text: "Copy code into it that you don't understand.", correct: false},
             {text: "Shut down your computer.", correct: false},
         ]
@@ -47,10 +47,10 @@ const questions = [
     {
         question: "Will I get a job after completing this course?",
         answers: [
-            {text: "If you put the effort in!", correct: false},
+            {text: "If you put the effort in!", correct: true},
             {text: "Unlikely", correct: false},
             {text: "Absolutely not", correct: false},
-            {text: "For certain", correct: true},
+            {text: "For certain", correct: false},
         ]
     },
     {
@@ -58,8 +58,8 @@ const questions = [
         answers: [
             {text: "Jimmy Java", correct: false},
             {text: "Albert Einstein", correct: false},
-            {text: "Brendan Eich", correct: false},
-            {text: "Doug Prishpreed", correct: true},
+            {text: "Brendan Eich", correct: true},
+            {text: "Doug Prishpreed", correct: false},
         ]
     }
 ];
@@ -109,6 +109,7 @@ function chooseAnswer(e){
     const isCorrect = chosenBtn.dataset.correct === "true";
     if(isCorrect){
         chosenBtn.classList.add("correct");
+        score++;
     }
     else{
         chosenBtn.classList.add("incorrect");
@@ -121,5 +122,34 @@ function chooseAnswer(e){
     });
     nextButton.style.display = "block";
 }
+
+function giveNext(){
+    qIndex++;
+    if(qIndex < questions.length){
+        displayQ();
+    }
+    else{
+        displayScore();
+        saveScore();
+    }
+};
+
+
+function displayScore(){
+    resetState();
+    qElement.innerHTML = `You got ${score} correct out of ${questions.length}.`;
+    nextButton.innerHTML = "Try Again?";
+    nextButton.style.display = "block";
+}
+
+
+nextButton.addEventListener("click", ()=>{
+    if(qIndex < questions.length){
+        giveNext();
+    }
+    else{
+        startQuiz();
+    }
+})
 
 startQuiz();

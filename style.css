@@ -48,11 +48,6 @@ body {
     transition: all 0.3s;
 }
 
-.btn:hover{
-    background: black;
-    color: white;
-}
-
 #nextQ{
     background: green;
     color: white;
@@ -64,4 +59,23 @@ body {
     border-radius: 4px;
     cursor: pointer;
     display: none;
+}
+
+.correct{
+    background: green;
+    color: black;
+}
+
+.incorrect{
+    background: red;
+    color: black;
+}
+
+.btn:hover:not([disabled]){
+    background: black;
+    color: white;
+}
+
+.btn:disabled{
+    cursor: no-drop;
 }

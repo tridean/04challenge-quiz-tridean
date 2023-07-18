@@ -85,7 +85,7 @@ function displayQ(){
     qElement.innerHTML = qNum + ". " + currentQ.
     question;
 
-    currentQ.answers.forEach(answer => {
+    currentQ.answers.forEach(function (answer){
         const button = document.createElement("button");
         button.innerHTML = answer.text;
         button.classList.add("btn");
